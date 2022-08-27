@@ -3,9 +3,10 @@ description: "Update or publish templates to mandrill"
 author: "Saurish Kar"
 
 inputs:
-  mandrill_key: 
-  description: "Mandrill api key"
-  
+  mandrill_key:
+    description: "Mandrill api key"
+    default: ""
+
 runs:
   using: "node16"
   main: "dist/index.js"
