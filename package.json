@@ -2,10 +2,11 @@
   "name": "mandrill-templates-action",
   "version": "1.0.1",
   "description": "Update and publish templates to mandrill via node",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bump": "npm version"
+    "bump": "npm version",
+    "build": "ncc build src/action.js -o dist"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/saurishkar/mandrill-templates-action/issues"
   },
-  "homepage": "https://github.com/saurishkar/mandrill-templates-action#readme"
+  "homepage": "https://github.com/saurishkar/mandrill-templates-action#readme",
+  "dependencies": {
+    "@mailchimp/mailchimp_transactional": "^1.0.47"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.34.0"
+  }
 }
