@@ -1,6 +1,6 @@
 {
   "name": "mandrill-templates-action",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Update and publish templates to mandrill via node",
   "main": "dist/index.js",
   "scripts": {
