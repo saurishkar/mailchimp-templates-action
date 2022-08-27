@@ -1,0 +1,19 @@
+{
+  "name": "mandrill-templates-action",
+  "version": "1.0.0",
+  "description": "Update and publish templates to mandrill via node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saurishkar/mandrill-templates-action.git"
+  },
+  "author": "Saurish Kar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saurishkar/mandrill-templates-action/issues"
+  },
+  "homepage": "https://github.com/saurishkar/mandrill-templates-action#readme"
+}

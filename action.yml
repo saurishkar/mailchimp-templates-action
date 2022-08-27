@@ -1,0 +1,7 @@
+name: 'Mandrill Templates Action'
+description: "Update or publish templates to mandrill"
+author: "Saurish Kar"
+
+runs:
+  using: "node16"
+  main: "index.js"
