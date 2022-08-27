@@ -6,6 +6,10 @@ inputs:
   mandrill_key:
     description: "Mandrill api key"
     default: ""
+  template_name:
+    description: "Name of the mandrill template to be updated and published"
+  template_content:
+    description: "Updated content of the template to be published"
 
 runs:
   using: "node16"
