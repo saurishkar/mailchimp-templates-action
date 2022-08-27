@@ -17,7 +17,7 @@ const validatePrimaryInputs = () => {
 }
 
 const addAndPublishTemplate = async() => {
-  if(!subject) {
+  if(!templateSubject) {
     throw Error("Subject is required for adding a new template");
   }
   const response = await mandrillClient.templates.add({
