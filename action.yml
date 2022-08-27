@@ -1,8 +1,9 @@
 name: 'Mandrill Templates Action'
 description: "Update or publish templates to mandrill"
 author: "Saurish Kar"
-icon: "mail"
-color: "blue"
+branding:
+  icon: "mail"
+  color: "blue"
 
 inputs:
   mandrill_key:
