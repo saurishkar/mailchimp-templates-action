@@ -59,6 +59,12 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 const readFileContents = () => {
   const input = core.getInput("templateNames");
   const fileNames = input.split(",");
+  
+  if(fileNames.length === 0) {
+    core.info("No templates to add / update");
+    return;
+  };
+
   for(let filePath of fileNames) {
     const fullPath = path.resolve(filePath);
     core.info(`Processing file: ${fullPath}`);
