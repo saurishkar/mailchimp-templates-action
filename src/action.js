@@ -59,11 +59,12 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 const readFileContents = () => {
   const input = core.getInput("templateNames");
   const fileNames = JSON.parse(`\"${input}\"`);
-  console.log(fileNames);
-  for(let fileName of fileNames) {
-    const fullPath = path.resolve(fileName);
+  console.log(input, typeof input);
+  for(let filePath of fileNames) {
+    core.info(filePath);
+    const fullPath = path.resolve(filePath);
     core.info(`Processing file: ${fullPath}`);
-    const breaks = fileName.split("/");
+    const breaks = filePath.split("/");
     const exactFileName = breaks[breaks.length - 1];
     const rawdata = fs.readFileSync(fullPath);
     core.info(exactFileName);
