@@ -9,12 +9,9 @@ inputs:
   mandrill_key:
     description: "Mandrill api key"
     default: ""
-  template_name:
-    description: "Name of the mandrill template to be updated and published"
-  template_content:
-    description: "Updated content of the template to be published"
-  template_subject:
-    description: "Subject of the email if adding a new template. If updating a template, this is not required"
+    required: true
+  templateNames:
+    description: "File Names of the mandrill templates to be updated and published"
 runs:
   using: "node16"
   main: "dist/index.js"

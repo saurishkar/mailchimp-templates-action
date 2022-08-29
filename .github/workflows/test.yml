@@ -25,10 +25,10 @@ jobs:
         uses: tj-actions/changed-files@v29.0.0
         with:
           files: |
-            **/*.html
-          json: true
+            **.html
 
       - name: Update Mandrill templates
         uses: "./"
         with:
-          fileNames: ${{ steps.changed-files.outputs.all_changed_files }}
+          templateNames: ${{ steps.changed-files.outputs.all_changed_files }}
+          mandrill_key: ${{ secrets.mandrill_key }}
