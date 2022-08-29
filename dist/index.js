@@ -6871,7 +6871,6 @@ const fs = __nccwpck_require__(7147);
 const path = __nccwpck_require__(1017);
 
 let mandrillClient;
-const mandrillKey = core.getInput("mandrill_key");
 
 const addAndPublishTemplate = async ({ name, content }) => {
   const response = await mandrillClient.templates.add({
@@ -6899,57 +6898,67 @@ const findTemplate = async ({ name }) => {
 };
 
 const addOrUpdateTemplate = async ({ name, content }) => {
-  console.log("----------------------");
-  console.log("Check for template");
-  console.log("----------------------");
-  console.log("\n");
+  core.info("----------------------");
+  core.info("Check for template");
+  core.info("----------------------");
+  core.info("\n");
   const { status: getTemplateStatus } = findTemplate({ name });
 
   if (getTemplateStatus === 200) {
     // Template Found
-    console.log("----------------------");
-    console.log("Found Template, Updating and Publishing...");
-    console.log("----------------------");
-    console.log("\n");
+    core.info("----------------------");
+    core.info("Found Template, Updating and Publishing...");
+    core.info("----------------------");
+    core.info("\n");
     const updateResponse = await updateAndPublishTemplate({ name, content });
-    console.log(updateResponse);
+    core.info(updateResponse);
   } else {
     // Template Does not exist
-    console.log("----------------------");
-    console.log("Template Not Found, Adding New Template...");
-    console.log("----------------------");
-    console.log("\n");
+    core.info("----------------------");
+    core.info("Template Not Found, Adding New Template...");
+    core.info("----------------------");
+    core.info("\n");
     const updateResponse = await addAndPublishTemplate({ name, content });
-    console.log(updateResponse);
+    core.info(updateResponse);
   }
 };
 
 const readFileContents = () => {
-  const fileNames = JSON.parse(`${core.getInput("fileNames")}`);
+  const input = core.getInput("fileNames");
+  core.debug();
+  if(core.isDebug()) {
+    core.info(typeof input, input);  
+  }
+  const fileNames = JSON.parse(`${input}`);
   fileNames.forEach((fileName) => {
     const fullPath = path.resolve(fileName);
     core.info(`Processing file: ${fullPath}`);
     const breaks = fileName.split("/");
     const exactFileName = breaks[breaks.length - 1];
     const rawdata = fs.readFileSync(fullPath);
-    console.log(exactFileName);
-    console.log(rawdata);
-    console.log("\n");
+    core.info(exactFileName);
+    core.info(rawdata);
+    core.info("\n");
     addOrUpdateTemplate({ name: exactFileName, content: rawdata });
   });
 };
 
 async function callPing() {
+  const mandrillKey = core.getInput("mandrill_key");
   mandrillClient = mailchimp(mandrillKey);
   const response = await mandrillClient.users.ping();
-  console.log("----------------------");
-  console.log(response);
-  console.log("----------------------");
-  console.log("\n");
+  core.info("----------------------");
+  core.info(response);
+  core.info("----------------------");
+  core.info("\n");
   readFileContents();
 }
 
-callPing(); // if mandrill works, it will return "PONG!"
+try {
+  callPing(); // if mandrill works, it will return "PONG!"
+} catch(error) {
+  core.setFailed(error.message);
+}
 
 })();
 
