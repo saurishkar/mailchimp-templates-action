@@ -5,18 +5,6 @@ const path = require("path");
 
 let mandrillClient;
 const mandrillKey = core.getInput("mandrill_key");
-const templateName = core.getInput("template_name");
-const templateCode = core.getInput("template_content");
-const templateSubject = core.getInput("template_subject");
-
-const validatePrimaryInputs = () => {
-  if (!templateName) {
-    throw Error("Template Name is Required");
-  }
-  if (!templateCode) {
-    throw Error("Template Code cannot be blank");
-  }
-};
 
 const addAndPublishTemplate = async ({ name, content }) => {
   const response = await mandrillClient.templates.add({
@@ -85,7 +73,6 @@ const readFileContents = () => {
 };
 
 async function callPing() {
-  validatePrimaryInputs();
   mandrillClient = mailchimp(mandrillKey);
   const response = await mandrillClient.users.ping();
   console.log("----------------------");

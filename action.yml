@@ -9,6 +9,7 @@ inputs:
   mandrill_key:
     description: "Mandrill api key"
     default: ""
+    required: true
   fileNames:
     description: "File Names of the mandrill templates to be updated and published"
 runs:
