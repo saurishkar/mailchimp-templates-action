@@ -6926,7 +6926,8 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 const readFileContents = () => {
   const input = core.getInput("templateNames");
   const fileNames = JSON.parse(`\"${input}\"`);
-  fileNames.forEach((fileName) => {
+  console.log(fileNames);
+  for(let fileName of fileNames) {
     const fullPath = path.resolve(fileName);
     core.info(`Processing file: ${fullPath}`);
     const breaks = fileName.split("/");
@@ -6936,7 +6937,7 @@ const readFileContents = () => {
     core.info(rawdata);
     core.info("\n");
     addOrUpdateTemplate({ name: exactFileName, content: rawdata });
-  });
+  };
 };
 
 async function callPing() {
