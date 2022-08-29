@@ -10,9 +10,8 @@
 - Mandrill api key
 
 ### Adding new templates
-- template_name
-- template_code
-- template_subject
+- Template formats allowed - `.html`
+-  **NOTE**: Both Adding / Updating templates will be published by default after the action
 
 ### Updating existing templates
 - template_name
@@ -20,4 +19,8 @@
 
 <br />
 
-## NOTE: Both Adding / Updating templates will be published by default after the action
+## Usage
+- Create an action in your repo by copy pasting the code in `./.github/workflows/mailer.yml`
+- In the last step, under the `uses:` param, replace `./` with `saurishkar/mandrill-templates-action@<version>`
+- Add `mandrill_key` as a repository secret for your action
+- Trigger the workflow to see it in action
