@@ -27,8 +27,6 @@ jobs:
           files: |
             **/*.html
 
-          json: true
-
       - name: Update Mandrill templates
         uses: "./"
         with:
