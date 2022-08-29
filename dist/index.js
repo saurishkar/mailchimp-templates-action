@@ -6899,7 +6899,7 @@ const findTemplate = async ({ name }) => {
 
 const addOrUpdateTemplate = async ({ name, content }) => {
   core.info("----------------------");
-  core.info("Check for template");
+  core.info(`Checking for template: ${name}`);
   core.info("----------------------");
   core.info("\n");
   const { status: getTemplateStatus } = findTemplate({ name });
@@ -6926,6 +6926,12 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 const readFileContents = () => {
   const input = core.getInput("templateNames");
   const fileNames = input.split(",");
+  
+  if(fileNames.length === 0) {
+    core.info("No templates to add / update");
+    return;
+  };
+
   for(let filePath of fileNames) {
     const fullPath = path.resolve(filePath);
     core.info(`Processing file: ${fullPath}`);
@@ -6935,7 +6941,7 @@ const readFileContents = () => {
     exactFileName = exactFileName.replace(/\.html/, "");
 
     const rawdata = fs.readFileSync(fullPath);
-    addOrUpdateTemplate({ name: exactFileName, content: rawdata });
+    addOrUpdateTemplate({ name: exactFileName, content: rawdata.toString() });
   };
 };
 
@@ -6944,7 +6950,7 @@ async function callPing() {
   mandrillClient = mailchimp(mandrillKey);
   const response = await mandrillClient.users.ping();
   core.info("----------------------");
-  core.info(`Template status: ${response.status}`);
+  core.info(`Mandrill status: ${response}`);
   core.info("----------------------");
   core.info("\n");
   readFileContents();
