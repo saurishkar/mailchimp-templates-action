@@ -6950,7 +6950,7 @@ async function callPing() {
   mandrillClient = mailchimp(mandrillKey);
   const response = await mandrillClient.users.ping();
   core.info("----------------------");
-  core.info(`Template status: ${response.status}`);
+  core.info(`Mandrill status: ${response}`);
   core.info("----------------------");
   core.info("\n");
   readFileContents();
