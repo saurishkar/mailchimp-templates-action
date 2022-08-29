@@ -32,7 +32,7 @@ const findTemplate = async ({ name }) => {
 
 const addOrUpdateTemplate = async ({ name, content }) => {
   core.info("----------------------");
-  core.info("Check for template");
+  core.info(`Checking for template: ${name}`);
   core.info("----------------------");
   core.info("\n");
   const { status: getTemplateStatus } = findTemplate({ name });
@@ -68,7 +68,7 @@ const readFileContents = () => {
     exactFileName = exactFileName.replace(/\.html/, "");
 
     const rawdata = fs.readFileSync(fullPath);
-    addOrUpdateTemplate({ name: exactFileName, content: rawdata });
+    addOrUpdateTemplate({ name: exactFileName, content: rawdata.toString() });
   };
 };
 
