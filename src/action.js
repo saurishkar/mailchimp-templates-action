@@ -59,9 +59,7 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 const readFileContents = () => {
   const input = core.getInput("templateNames");
   const fileNames = input.split(",");
-  console.log(fileNames, typeof fileNames);
   for(let filePath of fileNames) {
-    core.info(filePath);
     const fullPath = path.resolve(filePath);
     core.info(`Processing file: ${fullPath}`);
     const breaks = filePath.split("/");
@@ -70,9 +68,6 @@ const readFileContents = () => {
     exactFileName = exactFileName.replace(/\.html/, "");
 
     const rawdata = fs.readFileSync(fullPath);
-    core.info(exactFileName);
-    core.info(rawdata);
-    core.info("\n");
     addOrUpdateTemplate({ name: exactFileName, content: rawdata });
   };
 };
@@ -82,7 +77,7 @@ async function callPing() {
   mandrillClient = mailchimp(mandrillKey);
   const response = await mandrillClient.users.ping();
   core.info("----------------------");
-  core.info(response);
+  core.info(`Template status: ${response.status}`);
   core.info("----------------------");
   core.info("\n");
   readFileContents();
