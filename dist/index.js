@@ -6925,19 +6925,18 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 
 const readFileContents = () => {
   const input = core.getInput("templateNames");
-  console.log(typeof input, JSON.parse(`\"${input}\"`));
-  // const fileNames = JSON.parse(`${input}`);
-  // fileNames.forEach((fileName) => {
-  //   const fullPath = path.resolve(fileName);
-  //   core.info(`Processing file: ${fullPath}`);
-  //   const breaks = fileName.split("/");
-  //   const exactFileName = breaks[breaks.length - 1];
-  //   const rawdata = fs.readFileSync(fullPath);
-  //   core.info(exactFileName);
-  //   core.info(rawdata);
-  //   core.info("\n");
-  //   addOrUpdateTemplate({ name: exactFileName, content: rawdata });
-  // });
+  const fileNames = JSON.parse(`\"${input}\"`);
+  fileNames.forEach((fileName) => {
+    const fullPath = path.resolve(fileName);
+    core.info(`Processing file: ${fullPath}`);
+    const breaks = fileName.split("/");
+    const exactFileName = breaks[breaks.length - 1];
+    const rawdata = fs.readFileSync(fullPath);
+    core.info(exactFileName);
+    core.info(rawdata);
+    core.info("\n");
+    addOrUpdateTemplate({ name: exactFileName, content: rawdata });
+  });
 };
 
 async function callPing() {
