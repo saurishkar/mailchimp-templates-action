@@ -29,6 +29,7 @@ jobs:
           files-ignore: |
             *.yml
             *.js
+            *.json
           json: true
 
       - name: Update Mandrill templates
