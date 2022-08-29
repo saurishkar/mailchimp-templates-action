@@ -25,7 +25,7 @@ jobs:
         with:
           files: |
             **.html
-          json: true
+          separator: ","
       
       - name: Update templates
         uses: "./"
