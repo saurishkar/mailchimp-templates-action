@@ -25,8 +25,14 @@ jobs:
         uses: tj-actions/changed-files@v29.0.0
         with:
           files: |
-            **/*.html
+            *.html
+          files-ignore: |
+            *.yml
+            *.js
           json: true
+          
+      - name: Get modified files
+        run: echo "::set-output fileNames=mix-test::$(mix test)\n"
 
       - name: Update Mandrill templates
         uses: "./"
