@@ -6932,7 +6932,10 @@ const readFileContents = () => {
     const fullPath = path.resolve(filePath);
     core.info(`Processing file: ${fullPath}`);
     const breaks = filePath.split("/");
-    const exactFileName = breaks[breaks.length - 1];
+    
+    let exactFileName = breaks[breaks.length - 1];
+    exactFileName = exactFileName.replace(/\.html/, "");
+
     const rawdata = fs.readFileSync(fullPath);
     core.info(exactFileName);
     core.info(rawdata);
