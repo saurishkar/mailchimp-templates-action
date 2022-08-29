@@ -6925,8 +6925,8 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 
 const readFileContents = () => {
   const input = core.getInput("templateNames");
-  const fileNames = JSON.parse(`\"${input}\"`);
-  console.log(input, typeof input);
+  const fileNames = JSON.parse(input);
+  console.log(fileNames, typeof fileNames);
   for(let filePath of fileNames) {
     core.info(filePath);
     const fullPath = path.resolve(filePath);
