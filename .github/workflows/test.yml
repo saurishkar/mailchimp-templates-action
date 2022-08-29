@@ -36,3 +36,4 @@ jobs:
         uses: "./"
         with:
           fileNames: ${{ steps.changed-files.outputs.all_changed_files }}
+          mandrill_key: ${{ secrets.mandrill_key }}
