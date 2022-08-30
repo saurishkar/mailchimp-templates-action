@@ -1,4 +1,4 @@
-name: 'Mandrill Templates Action'
+name: 'Mailchimp Templates Action'
 description: "Update or publish templates to mandrill"
 author: "Saurish Kar"
 branding:
