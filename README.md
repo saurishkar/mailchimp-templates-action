@@ -1,6 +1,6 @@
-# mandrill-templates-action
+# mailchimp-templates-action
 
-**A github action to trigger automatic adding/updating of mailchimp templates from a github repository.**
+**A github action to trigger automatic adding/updating of mailchimp transactional templates (mandrillapp) from a github repository.**
 
 <br />
 
