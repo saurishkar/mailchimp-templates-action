@@ -6894,7 +6894,6 @@ const findTemplate = async ({ name }) => {
   const response = await mandrillClient.templates.info({
     name,
   });
-  console.log(response);
   return response;
 };
 
@@ -6903,9 +6902,9 @@ const addOrUpdateTemplate = async ({ name, content }) => {
   core.info(`Checking for template: ${name}`);
   core.info("----------------------");
   core.info("\n");
-  const { status: getTemplateStatus } = findTemplate({ name });
+  const { slug } = findTemplate({ name });
 
-  if (getTemplateStatus === 200) {
+  if (slug) {
     // Template Found
     core.info("----------------------");
     core.info("Found Template, Updating and Publishing...");
