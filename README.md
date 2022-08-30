@@ -1,23 +1,37 @@
 # mailchimp-templates-action
 
 **A github action to trigger automatic adding/updating of mailchimp transactional templates (mandrillapp) from a github repository.**
+**Uses `mailchimp/transactional` node api**
 
 <br />
 
-# Inputs Required
 
-### MUST Required
-- Mandrill api key
+### Template formats
+- `.html`
 
-### Adding / Updating new templates
-- Template formats allowed - `.html`
--  **NOTE**: Both Adding / Updating templates will be published by default after the action
+### Inputs
+- `mandrill_key` - mandrill transactional api key
+- `templateNames` - A list of comma separated file names with extensions (Ex: a.html,b.html,c.html)
+
+### Actions allowed
+- Adding a new template
+- Updating a template
+
+#### **NOTE**: Both Adding / Updating templates will be published by default after the action
 
 
 <br />
 
 ## Usage
-- Create an action in your repo by copy pasting the code in `./.github/workflows/mailer.yml`
-- In the last step, under the `uses:` param, replace `./` with `saurishkar/mandrill-templates-action@<version>`
-- Add `mandrill_key` as a repository secret for your action
-- Trigger the workflow to see it in action
+**Under your github workflow**
+
+```
+- name: Update templates
+        uses: "saurishkar/mailchimp-templates-action@<version>"
+        with:
+          templateNames: <your comma separated filenames>
+          mandrill_key: ${{ secrets.mandrill_key }}
+```
+**Replace `<version>` with the correct version**
+<br />
+**Set `mandrill_key` under your repository secrets**
