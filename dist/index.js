@@ -6902,7 +6902,7 @@ const addOrUpdateTemplate = async ({ name, content }) => {
   core.info(`Checking for template: ${name}`);
   core.info("----------------------");
   core.info("\n");
-  const { slug } = findTemplate({ name });
+  const { slug } = await findTemplate({ name });
 
   if (slug) {
     // Template Found
@@ -6911,7 +6911,7 @@ const addOrUpdateTemplate = async ({ name, content }) => {
     core.info("----------------------");
     core.info("\n");
     const updateResponse = await updateAndPublishTemplate({ name, content });
-    core.info(updateResponse);
+    core.info(updateResponse.toString());
   } else {
     // Template Does not exist
     core.info("----------------------");
@@ -6919,7 +6919,7 @@ const addOrUpdateTemplate = async ({ name, content }) => {
     core.info("----------------------");
     core.info("\n");
     const updateResponse = await addAndPublishTemplate({ name, content });
-    core.info(updateResponse);
+    core.info(updateResponse.toString());
   }
 };
 
