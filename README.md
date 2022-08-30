@@ -9,13 +9,10 @@
 ### MUST Required
 - Mandrill api key
 
-### Adding new templates
+### Adding / Updating new templates
 - Template formats allowed - `.html`
 -  **NOTE**: Both Adding / Updating templates will be published by default after the action
 
-### Updating existing templates
-- template_name
-- template_code
 
 <br />
 
