@@ -27,6 +27,7 @@ const findTemplate = async ({ name }) => {
   const response = await mandrillClient.templates.info({
     name,
   });
+  console.log(response);
   return response;
 };
 
