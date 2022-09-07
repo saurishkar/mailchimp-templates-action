@@ -44,7 +44,7 @@ const addOrUpdateTemplate = async ({ name, content }) => {
     core.info("----------------------");
     core.info("\n");
     const updateResponse = await updateAndPublishTemplate({ name, content });
-    core.info(updateResponse.toString());
+    core.info(JSON.stringify(updateResponse));
   } else {
     // Template Does not exist
     core.info("----------------------");
@@ -52,7 +52,7 @@ const addOrUpdateTemplate = async ({ name, content }) => {
     core.info("----------------------");
     core.info("\n");
     const updateResponse = await addAndPublishTemplate({ name, content });
-    core.info(updateResponse.toString());
+    core.info(JSON.stringify(updateResponse));
   }
 };
 
