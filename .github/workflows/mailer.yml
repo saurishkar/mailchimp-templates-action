@@ -33,7 +33,7 @@ jobs:
           since_last_remote_commit: true
       
       - name: Update templates
-        uses: "./"
+        uses: "saurishkar/mailchimp-templates-action@v2.0.7"
         with:
           templateNames: ${{ steps.changed-files.outputs.all_changed_files }}
           mandrill_key: ${{ secrets.mandrill_key }}
