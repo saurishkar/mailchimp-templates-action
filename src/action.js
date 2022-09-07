@@ -57,9 +57,11 @@ const addOrUpdateTemplate = async ({ name, content }) => {
 };
 
 const readFileContents = () => {
-  const input = core.getInput("templateNames");
+  const input = core.getInput("templateNames") || "";
   const fileNames = input.split(",");
-  
+
+  core.info(`file names: ${fileNames} ${typeof fileNames}`);
+
   if(fileNames.length === 0) {
     core.info("No templates to add / update");
     return;
